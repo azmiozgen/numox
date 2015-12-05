@@ -8,6 +8,6 @@ class PandigitalGeneration(object):
 		import itertools as it
 
 		digits = [1,2,3,4,5,6,7,8,9]
-		perms = sorted(list(it.permutations(digits)))
-		self.pandigitals = ["".join(map(str, p)) for p in perms]
+		perms = sorted([list(it.permutations(digits[:i], i)) for i in digits])
+		self.pandigitals = ["".join(map(str, p)) for pp in perms for p in pp]
 
