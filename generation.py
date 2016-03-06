@@ -102,3 +102,122 @@ class RightTriangleGeneration(object):
 			squares.append(hypoCandidate ** 2)
 		return newSideSet
 
+class TriangleGeneration(object):
+	'''
+	Generates triangle numbers P3(n) = n(n+1)/2.
+	'''
+	def __init__(self):
+		self._triangles = [1]
+
+	def next(self):
+		'''
+		Returns next triangle numbers.
+		'''
+		n = len(self._triangles) + 1
+		new = n * (n + 1) / 2
+		self._triangles.append(new)
+		return new
+
+	def getTriangles(self):
+
+		return self._triangles
+
+class SquareGeneration(object):
+	'''
+	Generates square numbers P4(n) = n^2.
+	'''
+	def __init__(self):
+		self._squares = [1]
+
+	def next(self):
+		'''
+		Returns next square numbers.
+		'''
+		n = len(self._squares) + 1
+		new = n ** 2
+		self._squares.append(new)
+		return new
+
+	def getSquares(self):
+
+		return self._squares
+
+class PentagonalGeneration(object):
+	'''
+	Generates pentagonal numbers P5(n) = n(3n-1)/2.
+	'''
+	def __init__(self):
+		self._pentagonals = [1]
+
+	def next(self):
+		'''
+		Returns next pentagonal numbers.
+		'''
+		n = len(self._pentagonals) + 1
+		new = n * (3 * n - 1) / 2
+		self._pentagonals.append(new)
+		return new
+
+	def getPentagonals(self):
+
+		return self._pentagonals
+
+class HexagonalGeneration(object):
+	'''
+	Generates hexagonal numbers P6(n) = n(2n-1).
+	'''
+	def __init__(self):
+		self._hexagonals = [1]
+
+	def next(self):
+		'''
+		Returns next hexagonal numbers.
+		'''
+		n = len(self._hexagonals) + 1
+		new = n * (2 * n - 1)
+		self._hexagonals.append(new)
+		return new
+
+	def getHexagonals(self):
+
+		return self._hexagonals
+
+class HeptagonalGeneration(object):
+	'''
+	Generates heptagonal numbers P7(n) = n(5n-3)/2.
+	'''
+	def __init__(self):
+		self._heptagonals = [1]
+
+	def next(self):
+		'''
+		Returns next heptagonal numbers.
+		'''
+		n = len(self._heptagonals) + 1
+		new = n * (5 * n - 3) / 2
+		self._heptagonals.append(new)
+		return new
+
+	def getHeptagonals(self):
+
+		return self._heptagonals
+
+class OctagonalGeneration(object):
+	'''
+	Generates octagonal numbers P8(n) = n(3n-2).
+	'''
+	def __init__(self):
+		self._octagonals = [1]
+
+	def next(self):
+		'''
+		Returns next octagonal numbers.
+		'''
+		n = len(self._octagonals) + 1
+		new = n * (3 * n - 2)
+		self._octagonals.append(new)
+		return new
+
+	def getOctagonals(self):
+
+		return self._octagonals
