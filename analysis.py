@@ -5,14 +5,15 @@ class Analysis(object):
 		self._number = number
 		if self._number < 0:
 			return "Not valid for analysis"
-		elif self._number == 0:
-			self._primeFactors = []
+		self._number = number
+		self._primeFactors = []
+		if self._number == 0:
 			self._factors = []
 			return None
-		elif self._number == 1:
-			self._primeFactors = []
+		if self._number == 1:
 			self._factors = [1]
 			return None
+		self._factors = []
 		self._factorize()
 
 	def _factorize(self):
@@ -22,36 +23,24 @@ class Analysis(object):
 		import itertools
 		import numpy as np
 
-		self._primeFactors = []
-
-		## Division by 2
-		number = self._number
-		while number % 2 == 0:
-			self._primeFactors.append(2)
-			number /= 2
-
-		## Division by odd numbers
-		for i in xrange(3, number + 1, 2):
-
-			## Continue if the number 'i' is multiple of any element in the 'primes'.
-			for prime in list(set(self._primeFactors)):
-				if i % prime == 0:
-					break
+		n = self._number
+		i = 2
+		while i ** 2 <= n:
+			if n % i:
+				i += 1
 			else:
-				## Append 'i' to primeFactors
-				while number % i == 0:
-					number = number / i
-					self._primeFactors.append(i)
+				n //= i
+				self._primeFactors.append(i)
+		if n > 1:
+			self._primeFactors.append(n)
 
-				## All factors
-				self._factors = [1,]
-				for i in xrange(1, len(self._primeFactors) + 1):
-					nn = set(itertools.combinations(self._primeFactors, i))
-					nn = np.array(list(nn))
-					for n in nn:
-						self._factors.append(n.prod())
-				self._factors.sort()
-			continue
+		## All factors
+		for i in xrange(1, len(self._primeFactors) + 1):
+			nn = set(itertools.combinations(self._primeFactors, i))
+			nn = np.array(list(nn))
+			for n in nn:
+				self._factors.append(n.prod())
+		self._factors.sort()
 
 	def printAsPrimes(self):
 		'''
@@ -97,4 +86,3 @@ class Analysis(object):
 		if j._number == self._number:
 			return False
 		return sum(j._factors[:-1]) == self._number
-
