@@ -23,3 +23,10 @@ class DualAnalysis(object):
 		Relatively primes have no common divisor other than 1.
 		'''
 		return self.greatestCommonDivider() == 1
+
+	def arePermutations(self):
+		'''
+		Answers if two number are permuatations of each other.
+		e.g. 72942 <--> 92427
+		'''
+		return sorted(list(str(self.number1))) == sorted(list(str(self.number2)))
